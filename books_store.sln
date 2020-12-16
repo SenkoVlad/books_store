@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Memory", "infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj", "{607F77DA-59C1-49AC-BE25-3C58D21EBDC6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{4D0EAE69-1367-4694-838F-A15171F34BEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web", "presentation\Store.Web\Store.Web.csproj", "{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,18 @@ Global
 		{607F77DA-59C1-49AC-BE25-3C58D21EBDC6}.Release|x64.Build.0 = Release|Any CPU
 		{607F77DA-59C1-49AC-BE25-3C58D21EBDC6}.Release|x86.ActiveCfg = Release|Any CPU
 		{607F77DA-59C1-49AC-BE25-3C58D21EBDC6}.Release|x86.Build.0 = Release|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Debug|x64.Build.0 = Debug|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Debug|x86.Build.0 = Debug|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Release|x64.ActiveCfg = Release|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Release|x64.Build.0 = Release|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Release|x86.ActiveCfg = Release|Any CPU
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +68,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1FA016BD-B8DC-4C8D-9AAA-AFF236E380E6} = {C24821A4-F87E-4B76-8C0E-E155D10F98D6}
 		{607F77DA-59C1-49AC-BE25-3C58D21EBDC6} = {6C546439-C01D-4CFA-B61E-768320A7D441}
+		{AA2ABB39-7F96-4CD6-8D75-A0632FD2CAC0} = {4D0EAE69-1367-4694-838F-A15171F34BEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39D6F33D-736B-41DB-96A9-639D178536B9}
