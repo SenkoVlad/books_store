@@ -26,6 +26,8 @@ namespace Store.Web
         {
             services.AddControllersWithViews();
             services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
+
             services.AddSingleton<BookService>();
 
             services.AddDistributedMemoryCache();
