@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Memory
@@ -11,6 +12,15 @@ namespace Store.Memory
             new Book(2, "ISBN 13455-436643", "M. Flower", "Refactoring", "It is very interesting book about refactoring", 21.22m),
             new Book(3, "ISBN 35346-26467", "B. Ritchie","C Programming Languege", "This book about C", 14.24m)
         };
+
+        public Book[] GetAllByIds(IEnumerable<int> bookIds)
+        {
+            var foundBooks = from book in books
+                             join bookId in bookIds on book.Id equals bookId
+                             select book;
+
+            return foundBooks.ToArray();
+        }
 
         public Book[] GetAllByIsbn(string isbn)
         {
