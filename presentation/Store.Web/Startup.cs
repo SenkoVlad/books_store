@@ -27,6 +27,14 @@ namespace Store.Web
             services.AddControllersWithViews();
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddSingleton<BookService>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(option =>
+            {
+                option.Cookie.HttpOnly = true;
+                option.IdleTimeout = TimeSpan.FromMinutes(20);
+                option.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +56,8 @@ namespace Store.Web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
