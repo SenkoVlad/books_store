@@ -17,33 +17,50 @@ namespace Store.Web.Controllers
             this.bookRepository = bookRepository;
             this.orderRepository = orderRepository;
         }
-
-        public IActionResult AddItem(int id)
+        [HttpPost]
+        public IActionResult UpdateItem(int bookId, int count)
         {
-            Cart cart;
-            Order order;
-            if (HttpContext.Session.TryGetCart(out cart))
-            {
-                order = orderRepository.GetById(cart.OrderId);    
-            }
-            else
-            {
-                order = orderRepository.Create();
-                cart = new Cart(order.Id);
-            }
+            (Order order, Cart cart) = GetOrCreateOrderAndCart();
             
-            var book = bookRepository.GetById(id);
-            order.AddItem(book, 1);
+            order.GetItem(bookId).Count = count;
+            SaveOrderAndCart(order, cart);
+
+            HttpContext.Session.Set(cart);
+
+            return RedirectToAction("Index", "Book", new { id = bookId });
+        }
+        public IActionResult AddItem(int bookId, int count)
+        {
+            (Order order, Cart cart) = GetOrCreateOrderAndCart();
+
+            var book = bookRepository.GetById(bookId);
+
+            order.AddOrUpdateItem(book, count);
+
+            SaveOrderAndCart(order, cart);
+
+            return RedirectToAction("Index", "Book", new { id = bookId });
+        }
+        public IActionResult RemoveItem(int bookId)
+        {
+            (Order order, Cart cart) = GetOrCreateOrderAndCart();
+            order.RemoveItem(bookId);
+
+            SaveOrderAndCart(order, cart);
+
+            return RedirectToAction("Index", "Book", new { id = bookId });
+        }
+
+        private void SaveOrderAndCart(Order order, Cart cart)
+        {
             orderRepository.Update(order);
 
             cart.TotalCount = order.TotalCount;
             cart.TotalPrice = order.TotalPrice;
 
-
             HttpContext.Session.Set(cart);
-
-            return RedirectToAction("Index", "Book", new { id = id });
         }
+
         public IActionResult Index()
         {
             if (HttpContext.Session.TryGetCart(out Cart cart))
@@ -78,6 +95,22 @@ namespace Store.Web.Controllers
                 TotalCount = order.TotalCount,
                 TotalPrice = order.TotalPrice
             };
+        }
+
+        private (Order order, Cart cart) GetOrCreateOrderAndCart()
+        {
+            Order order;
+            if (HttpContext.Session.TryGetCart(out Cart cart))
+            {
+                order = orderRepository.GetById(cart.OrderId);
+            }
+            else
+            {
+                order = orderRepository.Create();
+                cart = new Cart(order.Id);
+            }
+
+            return (order, cart);
         }
     }
 }
