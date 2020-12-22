@@ -27,7 +27,7 @@ namespace Store.Web.Controllers
 
             HttpContext.Session.Set(cart);
 
-            return RedirectToAction("Index", "Book", new { id = bookId });
+            return RedirectToAction("Index", "Order", new { id = bookId });
         }
         public IActionResult AddItem(int bookId, int count = 1)
         {
@@ -48,7 +48,7 @@ namespace Store.Web.Controllers
 
             SaveOrderAndCart(order, cart);
 
-            return RedirectToAction("Index", "Book", new { id = bookId });
+            return RedirectToAction("Index", "Order", new { id = bookId });
         }
 
         private void SaveOrderAndCart(Order order, Cart cart)
