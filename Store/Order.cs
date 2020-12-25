@@ -12,13 +12,15 @@ namespace Store
         public IReadOnlyCollection<OrderItem> Items => items;
         public int TotalCount => items.Sum(item => item.Count);
         public decimal TotalPrice => items.Sum(item => item.Price * item.Count);
-
-        public Order(int id, IEnumerable<OrderItem> items)
+        public OrderState State { get; private set; }
+        public string CellPhone { get; set; }
+        public Order(int id, OrderState state, IEnumerable<OrderItem> items)
         {
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
 
             Id = id;
+            State = state;
             this.items = new List<OrderItem>(items); 
         }
         public OrderItem GetItem(int bookId)
