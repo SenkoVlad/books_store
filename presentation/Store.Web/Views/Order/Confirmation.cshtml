@@ -6,7 +6,7 @@
 
 <h1>Подтверждение мобильного телефона </h1>
 
-<form action="@Url.Action("StartDelivery", "Order")" method="post">
+<form action="@Url.Action("Confirmate", "Order")" method="post">
     <input type="hidden" name="id" value="@Model.orderId" />
     <input type="hidden" name="cellPhone" value="@Model.CellPhone" />
     <div class="form-group">

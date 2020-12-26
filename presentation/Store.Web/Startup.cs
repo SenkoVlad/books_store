@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Store.Contractors;
 using Store.Memory;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace Store.Web
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<INotificationService, NotificationService>();
+            services.AddSingleton<IDeliveryService, PostamateDelivaryService>();
 
             services.AddSingleton<BookService>();
 
