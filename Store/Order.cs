@@ -11,9 +11,13 @@ namespace Store
         private List<OrderItem> items;
         public IReadOnlyCollection<OrderItem> Items => items;
         public int TotalCount => items.Sum(item => item.Count);
-        public decimal TotalPrice => items.Sum(item => item.Price * item.Count);
+        public decimal TotalPrice => items.Sum(item => item.Price * item.Count)
+                                          + (Delivery?.Amount ?? 0m);
         public OrderState State { get; private set; }
         public string CellPhone { get; set; }
+        public OrderDelivery Delivery { get; set; }
+        public OrderPayment Payment { get; set; }
+
         public Order(int id, OrderState state, IEnumerable<OrderItem> items)
         {
             if (items == null)
