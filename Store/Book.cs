@@ -21,7 +21,7 @@ namespace Store
             Price = price;
         }
 
-        internal static bool isIsbn(string query)
+        public static bool isIsbn(string query)
         {
             if(query == null)
                 return false;
