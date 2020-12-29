@@ -7,29 +7,29 @@ namespace Store.Contractors
 {
     public class CashPaymentService : IPaymentService
     {
-        public string UniqueCode => "cash";
+        public string Name => "cash";
         public string Title => "Оплата наличными";
 
         public OrderPayment GetPayment(Form form)
         {
-            if (UniqueCode != form.UniqueCode || !form.isFinal)
+            if (Name != form.ServiceName || !form.isFinal)
                 throw new InvalidOperationException("Invalid cash form.");
 
-            return new OrderPayment(UniqueCode, "Оплата наличными", new Dictionary<string, string>());
+            return new OrderPayment(Name, "Оплата наличными", new Dictionary<string, string>());
         }
 
-        public Form CreateForm(Order order)
+        public Form FirstForm(Order order)
         {
-            return new Form(UniqueCode, order.Id, 1, true, new Field[0]);
+            return Form.CreateFirst(Name)
+                       .AddParametr("orderId", order.Id.ToString());
         }
 
-        public Form MoveNextForm(int orderId, int step, IReadOnlyDictionary<string, string> value)
+        public Form NextForm( int step, IReadOnlyDictionary<string, string> value)
         {
             if (step != 1)
                 throw new InvalidOperationException("Invalid cash form.");
 
-            return new Form(UniqueCode, orderId, 2, true, new Field[0]);
+            return Form.CreateLast(Name,  step + 1,value);
         }
-
     }
 }
