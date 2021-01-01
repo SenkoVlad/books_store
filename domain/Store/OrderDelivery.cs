@@ -8,10 +8,10 @@ namespace Store
     {
         public string UniqueCode { get; }
         public string Description { get;}
-        public decimal Amount { get; }
+        public decimal Price { get; }
         public IReadOnlyDictionary<string, string> Parametrs { get; }
 
-        public OrderDelivery(string uniqueCode, string description, decimal amount, IReadOnlyDictionary<string, string> parametrs)
+        public OrderDelivery(string uniqueCode, string description, decimal price, IReadOnlyDictionary<string, string> parametrs)
         {
             if (string.IsNullOrWhiteSpace(uniqueCode))
                 throw new ArgumentNullException(nameof(uniqueCode));
@@ -24,7 +24,7 @@ namespace Store
 
             UniqueCode = uniqueCode;
             Description = description;
-            Amount = amount;
+            Price = price;
             Parametrs = parametrs;
         
         }

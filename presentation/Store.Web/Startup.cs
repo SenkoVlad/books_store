@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store.Contractors;
-using Store.Memory;
 using Store.Web.App;
 using Store.Web.Contractors;
 using Store.YandexKassa;
@@ -30,8 +29,6 @@ namespace Store.Web
         {
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
-            services.AddSingleton<IBookRepository, BookRepository>();
-            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<INotificationService, NotificationService>();
             services.AddSingleton<IDeliveryService, PostamateDelivaryService>();
             services.AddSingleton<IPaymentService, CashPaymentService>();
