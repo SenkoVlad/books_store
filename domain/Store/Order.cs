@@ -53,8 +53,8 @@ namespace Store
                     return null;
 
                 return new OrderPayment(orderDto.PaymentUniqueCode,
-                                         orderDto.PaymentDescription,
-                                         orderDto.PaymentParametrs);
+                                        orderDto.PaymentDescription,
+                                        orderDto.PaymentParametrs);
             }
             set
             {
