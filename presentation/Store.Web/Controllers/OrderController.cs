@@ -150,7 +150,7 @@ namespace Store.Web.Controllers
         {
             HttpContext.Session.RemoveCart();
 
-            return View();
+            return View("Finish");
         }
 
         [HttpPost]
@@ -167,7 +167,7 @@ namespace Store.Web.Controllers
             var payment = paymentService.GetPayment(form);
             var model = orderService.SetPayment(payment);
 
-            return View("Finish", model);
+            return Finish();
         }
     }
 }

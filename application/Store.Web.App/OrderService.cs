@@ -108,6 +108,8 @@ namespace Store.Web.App
                 orderItem.Count += count;
             else
                 order.Items.Add(bookId, count, book.Price);
+
+            orderRepository.Update(order);
         }
         public OrderModel UpdateBook(int bookId, int count)
         {
