@@ -27,7 +27,10 @@ namespace Store.Web
         {
             services.AddEfRepositories(Configuration.GetConnectionString("Store"));
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(option =>
+            {
+                option.Filters.Add(typeof(ExceptionFilter));
+            });
             services.AddHttpContextAccessor();
             services.AddSingleton<INotificationService, NotificationService>();
             services.AddSingleton<IDeliveryService, PostamateDelivaryService>();

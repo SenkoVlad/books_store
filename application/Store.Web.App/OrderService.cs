@@ -211,6 +211,9 @@ namespace Store.Web.App
             var order = GetOrder();
             order.Payment = payment;
             orderRepository.Update(order);
+            Session.RemoveCart();
+
+            notificationService.StartProcess(order);
 
             return Map(order);
         }

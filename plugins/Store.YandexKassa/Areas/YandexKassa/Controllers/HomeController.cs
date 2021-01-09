@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store.YandexKassa.Areas.YandexKassa.Models;
+using Store.Web.App;
 
 namespace Store.YandexKassa.Areas.YandexKassa.Controllers
 {
@@ -19,6 +20,8 @@ namespace Store.YandexKassa.Areas.YandexKassa.Controllers
         // /YandexKassa/Home/Callback
         public IActionResult Callback(int orderId, string returnUri)
         {
+            //HttpContext.Session.RemoveCart();
+
             var model = new ExampleModel
             {
                 OrderId = orderId,

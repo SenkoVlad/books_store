@@ -146,13 +146,6 @@ namespace Store.Web.Controllers
             return Redirect(redirectUri.ToString());
         }
 
-        public IActionResult Finish()
-        {
-            HttpContext.Session.RemoveCart();
-
-            return View("Finish");
-        }
-
         [HttpPost]
         public IActionResult PaymentStep(string serviceName, int step, Dictionary<string, string> values)
         {
@@ -167,7 +160,7 @@ namespace Store.Web.Controllers
             var payment = paymentService.GetPayment(form);
             var model = orderService.SetPayment(payment);
 
-            return Finish();
+            return View("Finish", model);
         }
     }
 }
